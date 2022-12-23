@@ -1,0 +1,63 @@
+<?php
+// @codingStandardsIgnoreFile
+/* @var $block \Clb\Test\Block\Product\Engraving */
+?>
+<?php if ($block->canShowEngraving()): ?>
+    <?php
+    $product = $block->getProduct();
+    $selectedData = false;
+    ?>
+
+    <div class="product-options-wrapper" id="product-options-wrapper" data-hasrequired="* Required Fields">
+        <div class="fieldset" tabindex="0">
+            <fieldset class="fieldset product-options-wrapper"  data-hasrequired="* Required Fields">
+                <div class="engraving-details-form">
+                    <div class="field comment">
+                        <div class="control">
+                            <div class="field choice admin__field admin__field-option">
+                                <input type="checkbox" class="checkbox admin__control-checkbox product-custom-option"
+                                       onchange="window.displayEngravingField(this);"
+                                        <?= ($selectedData)?' readonly=true':'' ?>
+                                       name="has_engraving" id="has_engraving">
+                                <label class="label admin__field-label" for="has_engraving">
+                                    <span><?= __("Add engraving text?") ?></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field comment engraving_text" id="engraving_text_field" style="display: none">
+                        <label class="label" for="engraving_text">
+                            <span><?php echo __("Engraving text : ") ?></span>
+                        </label>
+                        <div class="control">
+                            <textarea name="engraving_text" id="engraving_text"
+                                      placeholder="<?php echo __("Engraving text") ?>"
+                                      title="<?php echo __("Engraving text.") ?>"
+                                      class="input-text "
+                                    <?= ($selectedData)?' readonly=true':'' ?>
+                                      cols="5" rows="3" maxlength="100"
+                                       ><?php echo ($selectedData)?$selectedData['engraving_text']:'' ?></textarea>
+                            <p id="engraving_text_note">
+                                <?php echo __("Text Limit is 100. ") ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <script type="text/javascript">
+        require([
+            'jquery',
+            'mage/mage'
+        ], function(jQuery){
+            jQuery(document).ready(function() {
+                var elemTextField = jQuery('#engraving_text_field');
+
+                window.displayEngravingField = function (elem){
+                    elemTextField.toggle();
+                };
+            });
+        });
+    </script>
+<?php endif; ?>

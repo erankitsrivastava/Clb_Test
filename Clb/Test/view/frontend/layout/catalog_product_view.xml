@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ *//var/www/html/m243/app/code/Clb/Test/view/frontend/layout/catalog_product_view.xml
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="product.info.form.content">
+            <block before="product.info.addtocart"
+                   class="Clb\Test\Block\Product\Engraving"
+                   name="clb.engraving.option" as="clb_engraving_option"
+                   template="Clb_Test::product/options.phtml"/>
+        </referenceContainer>
+    </body>
+</page>
